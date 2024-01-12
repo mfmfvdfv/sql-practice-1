@@ -62,4 +62,4 @@ order by user_id
 ----ex12
 select class from courses
 group by class
-having count(student)>=5;
+having count(distinct student)>=5;
