@@ -41,9 +41,21 @@ LIMIT 2;
 -----------------Write a solution to find the IDs of the invalid tweets
 select tweet_id  from Tweets; 
 where length(content)>15;
-----------------
+---------------- 
 SELECT COUNT(*) AS hired_employees_count
 FROM employees
 WHERE YEAR(hire_date) = 2022
   AND MONTH(hire_date) BETWEEN 1 AND 7;
+------------------------
+SELECT POSITION('a' IN LOWER(first_name)) AS position_of_a
+FROM worker
+WHERE LOWER(first_name) = 'amitah';
+----------------
+SELECT
+    title,
+    CAST(SUBSTRING(title FROM '[0-9]+') AS INT) AS vintage_year
+FROM
+    winemag_p2
+WHERE
+    LOWER(title) LIKE '%macedonia%';
 
