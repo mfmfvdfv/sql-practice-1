@@ -38,3 +38,12 @@ GROUP BY
 ORDER BY
     total_messages DESC
 LIMIT 2;
+-----------------Write a solution to find the IDs of the invalid tweets
+select tweet_id  from Tweets; 
+where length(content)>15;
+----------------
+SELECT COUNT(*) AS hired_employees_count
+FROM employees
+WHERE YEAR(hire_date) = 2022
+  AND MONTH(hire_date) BETWEEN 1 AND 7;
+
