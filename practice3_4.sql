@@ -58,4 +58,45 @@ FROM
     winemag_p2
 WHERE
     LOWER(title) LIKE '%macedonia%';
+-------------------
+SELECT
+    CASE
+        WHEN pclass = 1 THEN 'first_class'
+        WHEN pclass = 2 THEN 'second_class'
+        WHEN pclass = 3 THEN 'third_class'
+        ELSE 'unknown_class'
+    END AS passenger_class,
+    COUNT(*) AS total_passengers,
+    SUM(CASE WHEN survived = 1 THEN 1 ELSE 0 END) AS survivors,
+    SUM(CASE WHEN survived = 0 THEN 1 ELSE 0 END) AS non_survivors
+FROM
+    titanic
+GROUP BY
+    passenger_class
+ORDER BY
+    passenger_class;
+-------------- Find the names of the customer
+SELECT name
+FROM Customer
+WHERE referee_id <> 2 OR referee_id is NULL;
+-----------Patient Support Analysis (Part 2) [UnitedHealth SQL Interview Question]
+SELECT
+    ROUND((SUM(CASE WHEN call_category IS NULL OR call_category = 'n/a' THEN 1 ELSE 0 END) / COUNT(*)) * 100,1) AS call_percentage
+FROM callers;
+------------
+SELECT
+ SUM(CASE
+   WHEN DEVICE_TYPE = 'tablet' OR DEVICE_TYPE = 'phone' 
+   THEN 1 ELSE 0 END) AS MOBILE_VIEWS,
+ SUM(CASE
+   WHEN DEVICE_TYPE = 'laptop'
+   THEN 1 ELSE 0 END) AS LAPTOP_VIEWS
+FROM
+ VIEWERSHIP;
+-----------
+SELECT x, y, z,
+    CASE WHEN x + y > z AND x + z > y AND y + z > x THEN 'Yes' ELSE 'No'
+    END AS triangle
+FROM
+    triangle;
 
